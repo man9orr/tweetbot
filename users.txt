@@ -1,0 +1,6 @@
+@malikmalik5551: 2740600766
+<class 'tweepy.streaming.Stream'>@aboretalashdne: 520612376
+<class 'tweepy.streaming.Stream'>@11Abowaled: 849284133197053954
+<class 'tweepy.streaming.Stream'>@kairsabag: 704649386404478976
+<class 'tweepy.streaming.Stream'>@alhai2000: 401362849
+<class 'tweepy.streaming.Stream'>
