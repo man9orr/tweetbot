@@ -17,7 +17,7 @@ auth.secure = True
 api = tweepy.API(auth)
 mybot = api.get_user(screen_name = '@anti_forex')
 mylist = api.get_list('@' + mybot.screen_name,slug='sorry-for-adding-you')
-hashtag = ['فوركس','تداول','زيادة دخل']
+hashtag = ['فوركس']
 print ('Running bot: @' + mybot.screen_name + '\nUsing list: ' + mylist.name + ' Members Count: ' + str(mylist.member_count) + 'Subs Count' + str(mylist.subscriber_count))
 
 i = 0
@@ -31,8 +31,8 @@ while i < len(hashtag):
                 # tweet.retweet()
                 # tweet.favorite()
                 print ('Retweeted and Favorited the tweet')
-
-
+            m = "@%s not true" % (tweet.user.screen_name)
+            api.update_status(status=m, in_reply_to_status_id=tweet.id)
             if(tweet.user.following == False):
                 # tweet.user.follow()
                 print ('Followed the user')
