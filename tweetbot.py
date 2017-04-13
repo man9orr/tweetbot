@@ -32,13 +32,20 @@ while i < len(hashtag):
                 # tweet.favorite()
                 print ('Retweeted and Favorited the tweet')
             m = "@%s not true" % (tweet.user.screen_name)
-            api.update_status(status=m, in_reply_to_status_id=tweet.id)
+            #api.update_status(status=m, in_reply_to_status_id=tweet.id)
+            trends1 = api.trends_place(23424938)
+            for trend in trends1[0]['trends']:
+                print (trend['name'])
+
             if(tweet.user.following == False):
                 # tweet.user.follow()
                 print ('Followed the user')
             uopen = open('users.txt','a')
-            uopen.write ( '@' + tweet.user.screen_name + ': ' + str(tweet.user.id)+'\n' + str(tweet.text) + '\n' + str(tweet.created_at) + '\n\n')
+            uopen.write ( '@' + tweet.user.screen_name + ': ' + str(tweet.user.id)+'\n' + str(tweet.text) + '\n' + str(tweet.created_at) + '\n\n' + '\n\n')
+            uopen2 = open('trends.txt', 'a')
+            uopen2.write(trend['name'] + '\n')
             uopen.close()
+            uopen2.close()
         except tweepy.TweepError as e:
             print (e.reason)
             sleep(10)
