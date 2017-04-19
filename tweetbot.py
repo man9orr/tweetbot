@@ -17,7 +17,7 @@ auth.secure = True
 api = tweepy.API(auth)
 mybot = api.get_user(screen_name = '@anti_forex')
 mylist = api.get_list('@' + mybot.screen_name,slug='sorry-for-adding-you')
-hashtag = ['فوركس']
+hashtag = ['فوركس','تعلم كيف تجني ارباح','قصة نجاح','حقق ارباح','من موظف بسيط الى رجل اعمال','لحظة استلامه سيارته المايباخ']
 print ('Running bot: @' + mybot.screen_name + '\nUsing list: ' + mylist.name + ' Members Count: ' + str(mylist.member_count) + 'Subs Count' + str(mylist.subscriber_count))
 
 i = 0
@@ -28,11 +28,11 @@ while i < len(hashtag):
                 continue
             print ('\n\nFound a tweet by: @' + tweet.user.screen_name)
             if(tweet.retweeted == False) or (tweet.favorited == False):
-                # tweet.retweet()
+                tweet.retweet()
                 # tweet.favorite()
                 print ('Retweeted and Favorited the tweet')
             m = "@%s not true" % (tweet.user.screen_name)
-            #api.update_status(status=m, in_reply_to_status_id=tweet.id)
+            api.update_status(status=m, in_reply_to_status_id=tweet.id)
             trends1 = api.trends_place(23424938)
             for trend in trends1[0]['trends']:
                 print (trend['name'])
@@ -51,6 +51,6 @@ while i < len(hashtag):
             sleep(10)
             continue
         except StopIteration:
-            break
+            pass
     i +=1
 

@@ -18,14 +18,19 @@ mybot = api.get_user(screen_name = '@anti_forex')
 mylist = api.get_list('@' + mybot.screen_name,slug='sorry-for-adding-you')
 
 
-print ('Running bot: @' + mybot.screen_name + '\nUsing list: ' + mylist.name + ' Members Count: ' + str(mylist.member_count) + 'Subs Count' + str(mylist.subscriber_count))
-
 trends1 = api.trends_place(23424938)
 
 
-for trend in trends1[0]['trends']:
-    print (trend['name'])
+i = 50 * 50
+while i < 5000:
+    clearing_file = open('trends.txt', 'w')
+    erase = clearing_file.write(" ")
+    clearing_file.close()
+    for trend in trends1[0]['trends']:
+        print (trend['name'])
 
-    uopen2 = open('trends.txt', 'a')
-    uopen2.write(trend['name'] + '\n')
-    uopen2.close()
+        uopen2 = open('trends.txt', 'a')
+        uopen2.write(trend['name'] + '\n')
+        uopen2.close()
+    sleep(180)
+    i = i + 1
